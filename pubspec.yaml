@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   smooth_page_indicator: ^1.0.0+2
   hive: ^2.2.3
+  salomon_bottom_bar: ^3.3.1
+  font_awesome_flutter: ^10.3.0
 
 dev_dependencies:
   flutter_test:
