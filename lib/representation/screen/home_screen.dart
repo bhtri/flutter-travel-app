@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/representation/widget/app_bar_container.dart';
 
 class HoneScreen extends StatefulWidget {
   const HoneScreen({super.key});
@@ -10,6 +11,10 @@ class HoneScreen extends StatefulWidget {
 class _HoneScreenState extends State<HoneScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AppBarContainer(
+      child: Container(
+        color: Colors.amber,
+      ),
+    );
   }
 }
