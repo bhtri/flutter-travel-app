@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/core/constants/color_palette.dart';
+import 'package:travel_app/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/representation/screen/splash_screen.dart';
 import 'package:travel_app/routes.dart';
 
-void main() {
+void main() async {
+  await LocalStorageHelper.initLocalStorageHelper();
   runApp(const MyApp());
 }
 
