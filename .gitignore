@@ -144,3 +144,9 @@ app.*.map.json
 
 # flutter gitignore
 # https://stackoverflow.com/a/68324520
+
+# ignore hive
+# https://github.com/hivedb/hive/blob/master/.gitignore
+*.hive
+.test_coverage.dart
+coverage_badge.svg

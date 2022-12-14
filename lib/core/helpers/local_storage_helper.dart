@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:hive/hive.dart';
 
 class LocalStorageHelper {
@@ -10,8 +11,8 @@ class LocalStorageHelper {
   Box<dynamic>? hiveBox;
 
   static initLocalStorageHelper() async {
-    // String path = Directory.current.path;
-    // Hive.init(path);
+    String path = Directory.current.path;
+    Hive.init(path);
     _instance.hiveBox = await Hive.openBox('TravelApp');
   }
 
