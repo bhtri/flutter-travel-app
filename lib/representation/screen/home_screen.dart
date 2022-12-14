@@ -48,7 +48,7 @@ class _HoneScreenState extends State<HoneScreen> {
               color: Colors.white,
             ),
             const Padding(padding: EdgeInsets.all(kItemPadding)),
-            const SizedBox(width: kTopPadding), 
+            const SizedBox(width: kTopPadding),
             Container(
               width: 40,
               height: 40,
@@ -62,7 +62,23 @@ class _HoneScreenState extends State<HoneScreen> {
           ],
         ),
       ),
-      child: Container(),
+      child: Column(
+        children: const [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search your destination',
+              prefixIcon: Padding(
+                padding: EdgeInsets.all(kTopPadding),
+                child: Icon(
+                  FontAwesomeIcons.magnifyingGlass,
+                  color: Colors.black,
+                  size: kDefaultPadding,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
