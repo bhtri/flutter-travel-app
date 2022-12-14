@@ -12,6 +12,9 @@ class _HoneScreenState extends State<HoneScreen> {
   @override
   Widget build(BuildContext context) {
     return AppBarContainer(
+      titleString: 'Home',
+      implementLeading: true,
+      implementTraling: true,
       child: Container(
         color: Colors.amber,
       ),
