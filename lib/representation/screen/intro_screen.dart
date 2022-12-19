@@ -12,7 +12,7 @@ import 'package:travel_app/representation/widget/button_widget.dart';
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
 
-  static const String routeName = 'intro_screen';
+  static const String routeName = '/intro_screen';
 
   @override
   State<IntroScreen> createState() => _IntroScreenState();

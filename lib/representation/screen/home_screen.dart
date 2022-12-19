@@ -3,16 +3,39 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/representation/screen/hotel_screen.dart';
 import 'package:travel_app/representation/widget/app_bar_container.dart';
 
-class HoneScreen extends StatefulWidget {
-  const HoneScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  static const String routeName = '/home_screen';
 
   @override
-  State<HoneScreen> createState() => _HoneScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HoneScreenState extends State<HoneScreen> {
+class _HomeScreenState extends State<HomeScreen> {
+  Widget _builtItemCategory(Widget icon, Color color, Function() onTap, String title) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: kMediumPadding),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(kItemPadding),
+            ),
+            child: icon,
+          ),
+          const SizedBox(height: kItemPadding),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBarContainer(
@@ -63,8 +86,8 @@ class _HoneScreenState extends State<HoneScreen> {
         ),
       ),
       child: Column(
-        children: const [
-          TextField(
+        children: [
+          const TextField(
             decoration: InputDecoration(
               hintText: 'Search your destination',
               prefixIcon: Padding(
@@ -75,7 +98,59 @@ class _HoneScreenState extends State<HoneScreen> {
                   size: kDefaultPadding,
                 ),
               ),
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(kItemPadding)),
+              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: kItemPadding),
             ),
+          ),
+          const SizedBox(height: kDefaultPadding),
+          Row(
+            children: [
+              Expanded(
+                child: _builtItemCategory(
+                  ImageHelper.loadFromAsset(
+                    AssetHelper.icoHotel,
+                    width: kBottomBarIconSize,
+                    height: kBottomBarIconSize,
+                  ),
+                  const Color(0xffFE9C5E),
+                  () {
+                    Navigator.of(context).pushNamed(HotelScreen.routeName);
+                  },
+                  'Hotels',
+                ),
+              ),
+              const SizedBox(width: kDefaultPadding),
+              Expanded(
+                child: _builtItemCategory(
+                  ImageHelper.loadFromAsset(
+                    AssetHelper.icoPlane,
+                    width: kBottomBarIconSize,
+                    height: kBottomBarIconSize,
+                  ),
+                  const Color(0xffF77777),
+                  () {},
+                  'Flights',
+                ),
+              ),
+              const SizedBox(width: kDefaultPadding),
+              Expanded(
+                child: _builtItemCategory(
+                  ImageHelper.loadFromAsset(
+                    AssetHelper.icoHotelPlane,
+                    width: kBottomBarIconSize,
+                    height: kBottomBarIconSize,
+                  ),
+                  const Color(0xff3EC8BC),
+                  () {},
+                  'All',
+                ),
+              ),
+            ],
           )
         ],
       ),
