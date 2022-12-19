@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
-import 'package:travel_app/representation/screen/hotel_screen.dart';
+import 'package:travel_app/representation/screen/hotel_booking_screen.dart';
 import 'package:travel_app/representation/widget/app_bar_container.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -119,8 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const Color(0xffFE9C5E),
                   () {
-                    Navigator.of(context).pushNamed(HotelScreen.routeName);
-                  },
+                    Navigator.of(context).pushNamed(HotelBookingScreen.routeName);
+                  },  
                   'Hotels',
                 ),
               ),
