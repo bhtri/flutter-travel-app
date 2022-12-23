@@ -1,33 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
-import 'package:travel_app/core/helpers/asset_helper.dart';
 
 class ItemBookingWidget extends StatelessWidget {
-  const ItemBookingWidget({super.key});
+  const ItemBookingWidget({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.description,
+    this.onTap,
+  });
+
+  final String icon;
+  final String title;
+  final String description;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(kDefaultPadding),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(kItemPadding)),
-      ),
-      child: Row(
-        children: [
-          Image.asset(AssetHelper.icoLocation),
-          const SizedBox(width: kItemPadding),
-          Column(
-            children: const [
-              Text(
-                'data',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: kItemPadding),
-              Text('data'),
-            ],
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(kDefaultPadding),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(kItemPadding)),
+        ),
+        child: Row(
+          children: [
+            Image.asset(icon, width: 35, height: 35),
+            const SizedBox(width: kDefaultPadding),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title),
+                const SizedBox(height: kMinPadding),
+                Text(description, style: const TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
