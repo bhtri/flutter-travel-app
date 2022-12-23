@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:hive/hive.dart';
 
 class LocalStorageHelper {
@@ -11,7 +12,11 @@ class LocalStorageHelper {
   Box<dynamic>? hiveBox;
 
   static initLocalStorageHelper() async {
-    String path = Directory.current.path;
+    // https://stackoverflow.com/a/57965689
+    String? path;
+    if (!kIsWeb) {
+      path = Directory.current.path;
+    }
     Hive.init(path);
     _instance.hiveBox = await Hive.openBox('TravelApp');
   }
