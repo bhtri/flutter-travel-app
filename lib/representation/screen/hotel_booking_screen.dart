@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
+import 'package:travel_app/core/extensions/date_ext.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
+import 'package:travel_app/representation/screen/select_date_screen.dart';
 import 'package:travel_app/representation/widget/app_bar_container.dart';
 import 'package:travel_app/representation/widget/button_widget.dart';
 import 'package:travel_app/representation/widget/item_booking_widget.dart';
@@ -15,6 +17,8 @@ class HotelBookingScreen extends StatefulWidget {
 }
 
 class _HotelBookingScreenState extends State<HotelBookingScreen> {
+  String? dateSelected;
+
   @override
   Widget build(BuildContext context) {
     return AppBarContainer(
@@ -31,11 +35,21 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
               onTap: () {},
             ),
             const SizedBox(height: kMediumPadding),
-            ItemBookingWidget(
-              icon: AssetHelper.icoCalendal,
-              title: 'Select date',
-              description: '13 Feb - 18 Feb 2021',
-              onTap: () {},
+            StatefulBuilder(
+              builder: (context, setState) {
+                return ItemBookingWidget(
+                  icon: AssetHelper.icoCalendal,
+                  title: 'Select date',
+                  description: dateSelected ?? '13 Feb - 18 Feb 2021',
+                  onTap: () async {
+                    final result = await Navigator.of(context).pushNamed(SelectDateScreen.routeName);
+                    if (!(result as List<DateTime?>).any((element) => element == null)) {
+                      dateSelected = '${result[0]?.getStartDate} - ${result[1]?.getEndDate}';
+                      setState(() {});
+                    }
+                  },
+                );
+              },
             ),
             const SizedBox(height: kMediumPadding),
             ItemBookingWidget(
