@@ -37,7 +37,10 @@ class SelectDateScreen extends StatelessWidget {
               if (args.value is PickerDateRange) {
                 rangeStartDate = args.value.startDate;
                 rangeEndDate = args.value.endDate;
-              } else {}
+              } else {
+                rangeStartDate = null;
+                rangeEndDate = null;
+              }
             },
           ),
           ButtonWidget(
